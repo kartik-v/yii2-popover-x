@@ -3,7 +3,7 @@ yii2-popover-x
 
 An extended popover widget for Yii Framework 2 based on the [bootstrap-popover-x jQuery plugin](http://plugins.krajee.com/popover-x) by Krajee. This plugin
 is an extended popover JQuery plugin which combines both the popover and bootstrap modal features and includes various new styling enhancements. This widget
-can be setup just like the builtin yii\bootstrap\Modal, with some additional enhancements.
+can be setup just like the builtin `yii\bootstrap\Modal`, with some additional enhancements.
 
 > NOTE: This extension depends on the [kartik-v/yii2-widgets](https://github.com/kartik-v/yii2-widgets) extension which in turn depends on the 
 [yiisoft/yii2-bootstrap](https://github.com/yiisoft/yii2/tree/master/extensions/bootstrap) extension. Check the 
