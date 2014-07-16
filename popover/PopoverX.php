@@ -93,9 +93,9 @@ class PopoverX extends Widget
     public $footerOptions = [];
     
     /**
-     * @var array the options for rendering the close button tag.
-     * The close button is displayed in the header of the modal window. Clicking
-     * on the button will hide the modal window. If this is null, no close button will be rendered.
+     * @var array the options for rendering the close button tag. The close button
+     * is displayed in the header of the popover dialog. Clicking on the button will
+     * hide the popover dialog. If this is null, no close button will be rendered.
      *
      * The following special options are supported:
      *
@@ -110,7 +110,7 @@ class PopoverX extends Widget
 
     /**
      * @var array the options for rendering the toggle button tag.
-     * The toggle button is used to toggle the visibility of the modal window.
+     * The toggle button is used to toggle the visibility of the popover dialog.
      * If this property is null, no toggle button will be rendered.
      *
      * The following special options are supported:
@@ -247,8 +247,7 @@ class PopoverX extends Widget
     protected function initOptions()
     {
         $this->options = array_merge([
-            'role' => 'dialog',
-            'tabindex' => -1,
+            'role' => 'dialog'
         ], $this->options);
         Html::addCssClass($this->options, 'popover popover-' . $this->type);
 
