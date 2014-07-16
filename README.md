@@ -41,7 +41,7 @@ to the ```require``` section of your `composer.json` file.
 
 ```php
 use kartik\popover\PopoverX;
-~~~php
+
 PopoverX::begin([
     'header' => 'Hello world',
     'footer' => Html::button('View', ['class'=>'btn btn-primary']),
