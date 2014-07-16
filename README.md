@@ -18,6 +18,7 @@ The plugin offers these enhanced features:
   `info`, `success`, `danger`, and `warning` can be used.
 - Control popover placements `top`, `bottom`, `left`, or `right` of the target element.
 - Specially style the popover arrow to be consistent for each contextual color and popover placement.
+- Prebuilt CSS styles for controlling appearance and sizes of the popovers.
 
 > NOTE: This extension depends on the [kartik-v/yii2-widgets](https://github.com/kartik-v/yii2-widgets) extension which in turn depends on the 
 [yiisoft/yii2-bootstrap](https://github.com/yiisoft/yii2/tree/master/extensions/bootstrap) extension. Check the 

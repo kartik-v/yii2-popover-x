@@ -52,6 +52,9 @@ class PopoverX extends Widget
     const ALIGN_TOP = 'top';
     const ALIGN_BOTTOM = 'bottom';
     
+    const SIZE_LARGE = 'lg';
+    const SIZE_MEDIUM = 'md';
+    
     /**
      * @var string the popover contextual type. Must be one of the [[TYPE]] constants
      * Defaults to `PopoverX::TYPE_DEFAULT` or `default`.
@@ -63,6 +66,12 @@ class PopoverX extends Widget
      * Defaults to `PopoverX::ALIGN_RIGHT` or `right`.
      */
     public $placement = self::ALIGN_RIGHT;
+    
+    /**
+     * @var string the size of the popover dialog. Must be [[PopoverX::SIZE_LARGE]]
+     * or [[PopoverX::SIZE_MEDIUM]]
+     */
+    public $size;
     
     /**
      * @var string the header content in the popover dialog.
@@ -214,7 +223,6 @@ class PopoverX extends Widget
             if ($tag === 'button' && !isset($this->toggleButton['type'])) {
                 $this->toggleButton['type'] = 'button';
             }
-
             return Html::tag($tag, $label, $this->toggleButton);
         } else {
             return null;
@@ -249,7 +257,8 @@ class PopoverX extends Widget
         $this->options = array_merge([
             'role' => 'dialog'
         ], $this->options);
-        Html::addCssClass($this->options, 'popover popover-' . $this->type);
+        $size = !empty($this->size) ? ' popover-' . $this->size . '';
+        Html::addCssClass($this->options, 'popover popover-' . $this->type . $size);
 
         if ($this->pluginOptions !== false) {
             $this->pluginOptions = ArrayHelper::merge($this->pluginOptions, ['show' => false]);
