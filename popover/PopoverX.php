@@ -73,10 +73,10 @@ class PopoverX extends Widget
      * @var array the HTML attributes for the header. The following special 
      * options are supported:
      *
-     * - tag: string, the HTML tag for rendering the header. Defaults to 'h3'.
+     * - tag: string, the HTML tag for rendering the header. Defaults to 'div'.
      *
      */
-    public $headerOptions;
+    public $headerOptions = [];
     
     /**
      * @var string the footer content in the popover dialog.
@@ -90,7 +90,7 @@ class PopoverX extends Widget
      * - tag: string, the HTML tag for rendering the footer. Defaults to 'div'.
      *
      */
-    public $footerOptions;
+    public $footerOptions = [];
     
     /**
      * @var array the options for rendering the close button tag.
@@ -134,6 +134,7 @@ class PopoverX extends Widget
         $this->initOptions();
         echo $this->renderToggleButton() . "\n";
         echo Html::beginTag('div', $this->options) . "\n";
+        echo '<div class="arrow"></div>' . "\n";
         echo $this->renderHeader() . "\n";
         echo $this->renderBodyBegin() . "\n";
     }
@@ -146,7 +147,7 @@ class PopoverX extends Widget
         echo "\n" . $this->renderBodyEnd();
         echo "\n" . $this->renderFooter();
         echo "\n" . Html::endTag('div');
-        PopoverXAsset::register($view);
+        $this->registerAssets();
     }    
 
     /**
@@ -160,8 +161,8 @@ class PopoverX extends Widget
             $this->header = $button . "\n" . $this->header;
         }
         if (!empty($this->header)) {
-            $tag = ArrayHelper::remove($this->headerOptions, 'tag', 'h3');
-            Html::addCssClass($this->headerOptions, 'panel-title');
+            $tag = ArrayHelper::remove($this->headerOptions, 'tag', 'div');
+            Html::addCssClass($this->headerOptions, 'popover-title');
             return Html::tag($tag, "\n" . $this->header . "\n", $this->headerOptions);
         } else {
             return null;
@@ -174,7 +175,7 @@ class PopoverX extends Widget
      */
     protected function renderBodyBegin()
     {
-        return Html::beginTag('div', ['class' => 'popover-content']);
+        return Html::beginTag('div', ['class' => 'popover-content']);         
     }
 
     /**
@@ -193,8 +194,8 @@ class PopoverX extends Widget
     protected function renderFooter()
     {
         if (!empty($this->footer)) {
-            $tag = ArrayHelper::remove($this->footerOptions, 'tag', 'h3');
-            Html::addCssClass($this->headerOptions, 'popover-footer');
+            $tag = ArrayHelper::remove($this->footerOptions, 'tag', 'div');
+            Html::addCssClass($this->footerOptions, 'popover-footer');
             return Html::tag('div', "\n" . $this->footer . "\n", $this->footerOptions);
         } else {
             return null;
@@ -279,10 +280,11 @@ class PopoverX extends Widget
      */
     public function registerAssets()
     {
-        $id = '$("#' . $this->options['id'] . '")';
         $view = $this->getView();
         PopoverXAsset::register($view);
-        $this->registerPlugin('popoverX');
+        if ($this->toggleButton === null) {
+            $this->registerPlugin('popoverX');
+        }
     }
 
 }

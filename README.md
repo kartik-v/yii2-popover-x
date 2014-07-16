@@ -59,7 +59,7 @@ use kartik\popover\PopoverX;
 PopoverX::begin([
     'header' => 'Hello world',
     'footer' => Html::button('View', ['class'=>'btn btn-primary']),
-    'toggleButton' => ['label' => 'Open Popover'],
+    'toggleButton' => ['class'=>'btn btn-primary'],
 ]);
 
 echo '<p class="text-justify">' .
