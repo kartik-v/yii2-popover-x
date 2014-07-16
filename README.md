@@ -5,6 +5,20 @@ An extended popover widget for Yii Framework 2 based on the [bootstrap-popover-x
 is an extended popover JQuery plugin which combines both the popover and bootstrap modal features and includes various new styling enhancements. This widget
 can be setup just like the builtin `yii\bootstrap\Modal`, with some additional enhancements.
 
+## Features  
+
+The plugin offers these enhanced features:
+
+- The extended popover can be rendered just like a bootstrap modal dialog with the bootstrap popover styling. Since the plugin extends the bootstrap modal,
+  all features of the [bootstrap modal](http://getbootstrap.com/javascript/#modals) and its methods are also available.
+- Adds a popover footer along with header. Configuration of the HTML content for the popover is much easier, just like a bootstrap modal.
+- Specially styles and spaces out bootstrap buttons added in popover footer. 
+- Add a close icon/button to a popover window.
+- Configure various prebuilt styles/templates. In addition to a default (grey), the bootstrap 3 contextual color styles of `primary`, 
+  `info`, `success`, `danger`, and `warning` can be used.
+- Control popover placements `top`, `bottom`, `left`, or `right` of the target element.
+- Specially style the popover arrow to be consistent for each contextual color and popover placement.
+
 > NOTE: This extension depends on the [kartik-v/yii2-widgets](https://github.com/kartik-v/yii2-widgets) extension which in turn depends on the 
 [yiisoft/yii2-bootstrap](https://github.com/yiisoft/yii2/tree/master/extensions/bootstrap) extension. Check the 
 [composer.json](https://github.com/kartik-v/yii2-popover-x/blob/master/composer.json) for this extension's requirements and dependencies. 
@@ -12,7 +26,7 @@ Note: Yii 2 framework is still in active development, and until a fully stable Y
 may be updated when you install or update this extension. You may need to lock your composer package versions for your specific app, and test 
 for extension break if you do not wish to auto update dependencies.
 
-### Demo
+## Demo
 You can see detailed [documentation and examples](http://demos.krajee.com/popover-x) on usage of the extension.
 
 ## Installation
