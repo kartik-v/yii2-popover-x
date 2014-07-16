@@ -257,7 +257,7 @@ class PopoverX extends Widget
         $this->options = array_merge([
             'role' => 'dialog'
         ], $this->options);
-        $size = !empty($this->size) ? ' popover-' . $this->size . '';
+        $size = !empty($this->size) ? ' popover-' . $this->size : '';
         Html::addCssClass($this->options, 'popover popover-' . $this->type . $size);
 
         if ($this->pluginOptions !== false) {
