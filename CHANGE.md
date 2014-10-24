@@ -4,7 +4,8 @@ version 1.1.0
 
 - Enhancements for release v1.1.0 of bootstrap-popover-x plugin.
 - enh #2: Allow widget to be used as a popover in NavBar.
-- enh #3: Added `content` property to render the widget directly without begin and end methods.
+- enh #3: Add `content` property to render the widget directly without begin and end methods.
+- enh #4: Add `arrowOptions` property to configure HTML attributes for arrow.
 
 
 version 1.0.0
