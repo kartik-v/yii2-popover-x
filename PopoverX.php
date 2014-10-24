@@ -53,7 +53,7 @@ class PopoverX extends Widget
     const ALIGN_BOTTOM = 'bottom';
     const ALIGN_TOP_LEFT = 'top top-left';
     const ALIGN_BOTTOM_LEFT = 'bottom bottom-left';
-    const ALIGN_TOP_LIGHT = 'top top-right';
+    const ALIGN_TOP_RIGHT = 'top top-right';
     const ALIGN_BOTTOM_RIGHT = 'bottom bottom-right';
     const ALIGN_LEFT_TOP = 'left left-top';
     const ALIGN_RIGHT_TOP = 'right right-top';
