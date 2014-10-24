@@ -5,6 +5,8 @@ An extended popover widget for Yii Framework 2 based on the [bootstrap-popover-x
 is an extended popover JQuery plugin which combines both the popover and bootstrap modal features and includes various new styling enhancements. This widget
 can be setup just like the builtin `yii\bootstrap\Modal`, with some additional enhancements.
 
+> NOTE: The latest version of the plugin v1.1.0 has been released. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-popover-x/blob/master/CHANGE.md) for details.
+
 ## Features  
 
 The plugin offers these enhanced features:
@@ -16,7 +18,19 @@ The plugin offers these enhanced features:
 - Add a close icon/button to a popover window.
 - Configure various prebuilt styles/templates. In addition to a default (grey), the bootstrap 3 contextual color styles of `primary`, 
   `info`, `success`, `danger`, and `warning` can be used.
-- Control popover placements `top`, `bottom`, `left`, or `right` of the target element.
+- Control popover placements with respect to the target element. The plugin supports 12 different placement options:
+    - right
+    - left
+    - top
+    - bottom
+    - top top-left
+    - top top-right
+    - bottom bottom-left
+    - bottom bottom-right
+    - left left-top
+    - left left-bottom
+    - right right-top
+    - right right-bottom
 - Specially style the popover arrow to be consistent for each contextual color and popover placement.
 - Prebuilt CSS styles for controlling appearance and sizes of the popovers.
 

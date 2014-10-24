@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-popover-x
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 namespace kartik\popover;
@@ -51,6 +51,14 @@ class PopoverX extends Widget
     const ALIGN_LEFT = 'left';
     const ALIGN_TOP = 'top';
     const ALIGN_BOTTOM = 'bottom';
+    const ALIGN_TOP_LEFT = 'top top-left';
+    const ALIGN_BOTTOM_LEFT = 'bottom bottom-left';
+    const ALIGN_TOP_LIGHT = 'top top-right';
+    const ALIGN_BOTTOM_RIGHT = 'bottom bottom-right';
+    const ALIGN_LEFT_TOP = 'left left-top';
+    const ALIGN_RIGHT_TOP = 'right right-top';
+    const ALIGN_LEFT_BOTTOM = 'left left-bottom';
+    const ALIGN_RIGHT_BOTTOM = 'right right-bottom';
     
     const SIZE_LARGE = 'lg';
     const SIZE_MEDIUM = 'md';
@@ -79,6 +87,11 @@ class PopoverX extends Widget
     public $header;
     
     /**
+     * @var array the HTML attributes for the popover indicator arrow.
+     */
+    public $arrowOptions = [];
+    
+    /**
      * @var array the HTML attributes for the header. The following special 
      * options are supported:
      *
@@ -86,6 +99,12 @@ class PopoverX extends Widget
      *
      */
     public $headerOptions = [];
+    
+    /**
+     * @var string the body content
+     */
+    public $content = '';
+    
     
     /**
      * @var string the footer content in the popover dialog.
@@ -143,7 +162,7 @@ class PopoverX extends Widget
         $this->initOptions();
         echo $this->renderToggleButton() . "\n";
         echo Html::beginTag('div', $this->options) . "\n";
-        echo '<div class="arrow"></div>' . "\n";
+        echo Html::tag('div', '', $this->arrowOptions);
         echo $this->renderHeader() . "\n";
         echo $this->renderBodyBegin() . "\n";
     }
@@ -193,7 +212,7 @@ class PopoverX extends Widget
      */
     protected function renderBodyEnd()
     {
-        return Html::endTag('div');
+        return $this->content . "\n" . Html::endTag('div');
     }
 
     /**
@@ -259,7 +278,8 @@ class PopoverX extends Widget
         ], $this->options);
         $size = !empty($this->size) ? ' popover-' . $this->size : '';
         Html::addCssClass($this->options, 'popover popover-' . $this->type . $size);
-
+        Html::addCssClass($this->arrowOptions, 'arrow');
+        
         if ($this->pluginOptions !== false) {
             $this->pluginOptions = ArrayHelper::merge($this->pluginOptions, ['show' => false]);
         }

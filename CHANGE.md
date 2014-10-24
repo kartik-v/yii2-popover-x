@@ -1,4 +1,14 @@
+version 1.1.0
+=============
+**Date:** 2014-10-24
+
+- Enhancements for release v1.1.0 of bootstrap-popover-x plugin.
+- enh #2: Allow widget to be used as a popover in NavBar.
+- enh #3: Added `content` property to render the widget directly without begin and end methods.
+
+
 version 1.0.0
 =============
+**Date:** 2014-07-15
 - Initial release
 - PSR4 alias change
