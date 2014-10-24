@@ -87,11 +87,6 @@ class PopoverX extends Widget
     public $header;
     
     /**
-     * @var array the HTML attributes for the popover indicator arrow.
-     */
-    public $arrowOptions = [];
-    
-    /**
      * @var array the HTML attributes for the header. The following special 
      * options are supported:
      *
@@ -105,6 +100,10 @@ class PopoverX extends Widget
      */
     public $content = '';
     
+    /**
+     * @var array the HTML attributes for the popover indicator arrow.
+     */
+    public $arrowOptions = [];    
     
     /**
      * @var string the footer content in the popover dialog.
