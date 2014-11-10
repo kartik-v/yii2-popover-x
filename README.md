@@ -5,7 +5,7 @@ An extended popover widget for Yii Framework 2 based on the [bootstrap-popover-x
 is an extended popover JQuery plugin which combines both the popover and bootstrap modal features and includes various new styling enhancements. This widget
 can be setup just like the builtin `yii\bootstrap\Modal`, with some additional enhancements.
 
-> NOTE: The latest version of the plugin v1.1.0 has been released. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-popover-x/blob/master/CHANGE.md) for details.
+> NOTE: The latest version of the plugin v1.2.0 has been released. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-popover-x/blob/master/CHANGE.md) for details.
 
 ## Features  
 
@@ -48,7 +48,8 @@ You can see detailed [documentation and examples](http://demos.krajee.com/popove
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
-> Note: You must set the `minimum-stability` to `dev` in the **composer.json** file in your application root folder before installation of this extension.
+> Note: Check the [composer.json](https://github.com/kartik-v/yii2-popover-x/blob/master/composer.json) for this extension's requirements and dependencies. 
+Read this [web tip /wiki](http://webtips.krajee.com/setting-composer-minimum-stability-application/) on setting the `minimum-stability` settings for your application's composer.json.
 
 Either run
 

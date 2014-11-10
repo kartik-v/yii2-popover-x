@@ -3,13 +3,12 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-popover-x
- * @version 1.1.0
+ * @version 1.2.0
  */
 
 namespace kartik\popover;
 
 use Yii;
-use kartik\widgets\AssetBundle;
 
 /**
  * Asset bundle for PopoverX widget. Includes assets from
@@ -20,7 +19,7 @@ use kartik\widgets\AssetBundle;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class PopoverXAsset extends AssetBundle
+class PopoverXAsset extends \kartik\base\AssetBundle
 {
     public $depends = [
         'yii\web\YiiAsset',

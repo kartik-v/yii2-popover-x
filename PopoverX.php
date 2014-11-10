@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-popover-x
- * @version 1.1.0
+ * @version 1.2.0
  */
 
 namespace kartik\popover;
@@ -11,7 +11,6 @@ namespace kartik\popover;
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-use kartik\widgets\Widget;
 
 /**
  * An extended popover widget for Yii Framework 2 based on the bootstrap-popover-x plugin
@@ -38,7 +37,7 @@ use kartik\widgets\Widget;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class PopoverX extends Widget
+class PopoverX extends \kartik\base\Widget
 {
     const TYPE_DEFAULT = 'default';
     const TYPE_PRIMARY = 'primary';
