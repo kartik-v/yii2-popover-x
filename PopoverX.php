@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-popover-x
- * @version 1.2.0
+ * @version 1.3.0
  */
 
 namespace kartik\popover;
@@ -61,6 +61,11 @@ class PopoverX extends \kartik\base\Widget
     
     const SIZE_LARGE = 'lg';
     const SIZE_MEDIUM = 'md';
+
+    /**
+     * @inherit doc
+     */
+    protected $_pluginName = 'popoverX';
     
     /**
      * @var string the popover contextual type. Must be one of the [[TYPE]] constants
@@ -309,7 +314,7 @@ class PopoverX extends \kartik\base\Widget
         $view = $this->getView();
         PopoverXAsset::register($view);
         if ($this->toggleButton === null) {
-            $this->registerPlugin('popoverX');
+            $this->registerPlugin($this->_pluginName);
         }
     }
 

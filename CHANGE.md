@@ -1,3 +1,9 @@
+version 1.3.0
+=============
+**Date:** 25-Nov-2014
+
+- (enh #5): Enhance widget to use updated plugin registration from Krajee base
+
 version 1.2.0
 =============
 **Date:** 10-Nov-2014
