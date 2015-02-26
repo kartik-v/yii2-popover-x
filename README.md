@@ -1,6 +1,12 @@
 yii2-popover-x
 =================
 
+[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-popover-x/v/stable.svg)](https://packagist.org/packages/kartik-v/yii2-popover-x)
+[![License](https://poser.pugx.org/kartik-v/yii2-popover-x/license.svg)](https://packagist.org/packages/kartik-v/yii2-popover-x)
+[![Total Downloads](https://poser.pugx.org/kartik-v/yii2-popover-x/downloads.svg)](https://packagist.org/packages/kartik-v/yii2-popover-x)
+[![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-popover-x/d/monthly.png)](https://packagist.org/packages/kartik-v/yii2-popover-x)
+[![Daily Downloads](https://poser.pugx.org/kartik-v/yii2-popover-x/d/daily.png)](https://packagist.org/packages/kartik-v/yii2-popover-x)
+
 An extended popover widget for Yii Framework 2 based on the [bootstrap-popover-x jQuery plugin](http://plugins.krajee.com/popover-x) by Krajee. This plugin
 is an extended popover JQuery plugin which combines both the popover and bootstrap modal features and includes various new styling enhancements. This widget
 can be setup just like the builtin `yii\bootstrap\Modal`, with some additional enhancements.
