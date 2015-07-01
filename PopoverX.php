@@ -1,9 +1,8 @@
 <?php
-
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-popover-x
- * @version 1.3.0
+ * @version 1.3.1
  */
 
 namespace kartik\popover;
@@ -157,7 +156,7 @@ class PopoverX extends \kartik\base\Widget
     public $toggleButton;
     
     /**
-     * Initializes the widget
+     * @inheritdoc
      */
     public function init()
     {
@@ -171,7 +170,7 @@ class PopoverX extends \kartik\base\Widget
     }
     
     /**
-     * Renders the widget.
+     * @inheritdoc
      */
     public function run()
     {
@@ -317,5 +316,4 @@ class PopoverX extends \kartik\base\Widget
             $this->registerPlugin($this->_pluginName);
         }
     }
-
 }

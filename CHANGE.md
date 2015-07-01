@@ -1,3 +1,9 @@
+version 1.3.1
+=============
+**Date:** 01-Jul-2015
+
+- Updates to composer dependencies.
+
 version 1.3.0
 =============
 **Date:** 25-Nov-2014
