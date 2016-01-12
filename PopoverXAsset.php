@@ -2,7 +2,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
  * @package yii2-popover-x
- * @version 1.3.2
+ * @version 1.3.3
  */
 
 namespace kartik\popover;

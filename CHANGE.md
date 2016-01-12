@@ -1,6 +1,12 @@
 Change Log: `yii2-popover-x`
 ============================
 
+## Version 1.3.3
+
+**Date:** 12-Jan-2016
+
+- (bug #13): Correct `init` and `run` of PopoverX widget.
+
 ## Version 1.3.2
 
 **Date:** 12-Jan-2016

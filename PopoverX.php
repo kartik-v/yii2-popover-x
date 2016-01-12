@@ -2,7 +2,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
  * @package yii2-popover-x
- * @version 1.3.2
+ * @version 1.3.3
  */
 
 namespace kartik\popover;
@@ -151,22 +151,38 @@ class PopoverX extends Widget
     /**
      * @inheritdoc
      */
+    public function init()
+    {
+        parent::init();
+        $this->initWidget();
+    }
+    
+    /**
+     * @inheritdoc
+     */
     public function run()
     {
-        $this->renderWidget();
+        $this->runWidget();
     }
-
+    
     /**
-     * Initializes and renders the widget
+     * Initializes the widget
      */
-    public function renderWidget()
-    {
+    public function initWidget()
+    { 
         $this->initOptions();
         echo $this->renderToggleButton() . "\n";
         echo Html::beginTag('div', $this->options) . "\n";
         echo Html::tag('div', '', $this->arrowOptions);
         echo $this->renderHeader() . "\n";
         echo $this->renderBodyBegin() . "\n";
+    }
+    
+    /**
+     * Runs the widget
+     */
+    public function runWidget()
+    {
         echo "\n" . $this->renderBodyEnd();
         echo "\n" . $this->renderFooter();
         echo "\n" . Html::endTag('div');
