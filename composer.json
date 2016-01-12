@@ -1,7 +1,15 @@
 {
     "name": "kartik-v/yii2-popover-x",
     "description": "An extended bootstrap 3.0 popover widget which combines both the bootstrap popover and modal features and includes various new styling enhancements.",
-    "keywords": ["bootstrap", "popover", "popover-x", "extended", "modal", "modal-popover", "jquery"],
+    "keywords": [
+        "bootstrap",
+        "popover",
+        "popover-x",
+        "extended",
+        "modal",
+        "modal-popover",
+        "jquery"
+    ],
     "homepage": "https://github.com/kartik-v/yii2-popover-x",
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
