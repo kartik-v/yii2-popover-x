@@ -6,8 +6,7 @@
  */
 
 namespace kartik\popover;
-
-use kartik\base\AssetBundle;
+use kartik\base\PluginAssetBundle;
 
 /**
  * Asset bundle for PopoverX widget. Includes assets from
@@ -18,14 +17,11 @@ use kartik\base\AssetBundle;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class PopoverXAsset extends AssetBundle
+class PopoverXAsset extends PluginAssetBundle
 {
-    public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
-        'yii\bootstrap\BootstrapPluginAsset',
-    ];
-    
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         $this->setSourcePath('@vendor/kartik-v/bootstrap-popover-x');
