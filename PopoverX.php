@@ -44,6 +44,13 @@ class PopoverX extends Widget
     const TYPE_DANGER = 'danger';
     const TYPE_WARNING = 'warning';
 
+    const ALIGN_AUTO = 'auto';
+    const ALIGN_AUTO_TOP = 'auto-top';
+    const ALIGN_AUTO_RIGHT = 'auto-right';
+    const ALIGN_AUTO_BOTTOM = 'auto-bottom';
+    const ALIGN_AUTO_LEFT = 'auto-left';
+    const ALIGN_HORIZONTAL = 'horizontal';
+    const ALIGN_AUTO_VERTICAL = 'vertical';
     const ALIGN_RIGHT = 'right';
     const ALIGN_LEFT = 'left';
     const ALIGN_TOP = 'top';
