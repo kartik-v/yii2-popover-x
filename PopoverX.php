@@ -1,8 +1,8 @@
 <?php
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2017
  * @package yii2-popover-x
- * @version 1.3.3
+ * @version 1.3.4
  */
 
 namespace kartik\popover;
@@ -209,7 +209,7 @@ class PopoverX extends Widget
         }
         if (!empty($this->header)) {
             $tag = ArrayHelper::remove($this->headerOptions, 'tag', 'div');
-            Html::addCssClass($this->headerOptions, 'popover-title');
+            Html::addCssClass($this->headerOptions, ['popover-header', 'popover-title']);
             return Html::tag($tag, "\n" . $this->header . "\n", $this->headerOptions);
         } else {
             return null;
@@ -223,7 +223,7 @@ class PopoverX extends Widget
      */
     protected function renderBodyBegin()
     {
-        return Html::beginTag('div', ['class' => 'popover-content']);
+        return Html::beginTag('div', ['class' => 'popover-body popover-content']);
     }
 
     /**
@@ -248,7 +248,7 @@ class PopoverX extends Widget
             Html::addCssClass($this->footerOptions, 'popover-footer');
             return Html::tag($tag, "\n" . $this->footer . "\n", $this->footerOptions);
         } else {
-            return null;
+            return '';
         }
     }
 
@@ -267,7 +267,7 @@ class PopoverX extends Widget
             }
             return Html::tag($tag, $label, $this->toggleButton);
         } else {
-            return null;
+            return '';
         }
     }
 
@@ -284,10 +284,9 @@ class PopoverX extends Widget
             if ($tag === 'button' && !isset($this->closeButton['type'])) {
                 $this->closeButton['type'] = 'button';
             }
-
             return Html::tag($tag, $label, $this->closeButton);
         } else {
-            return null;
+            return '';
         }
     }
 
@@ -297,17 +296,17 @@ class PopoverX extends Widget
      */
     protected function initOptions()
     {
-        $this->options = array_merge([
-            'role' => 'dialog'
-        ], $this->options);
-        $size = !empty($this->size) ? ' popover-' . $this->size : '';
-        Html::addCssClass($this->options, 'popover popover-' . $this->type . $size);
+        if (!isset($this->options['role'])) {
+            $this->options['role'] = 'dialog';
+        }
+        Html::addCssClass($this->options, ['popover', 'popover-x', "popover-{$this->type}"]);
+        if (isset($this->size)) {
+            Html::addCssClass($this->options, "popover-{$this->size}");
+        }
         Html::addCssClass($this->arrowOptions, 'arrow');
-
         if ($this->pluginOptions !== false) {
             $this->pluginOptions = ArrayHelper::merge($this->pluginOptions, ['show' => false]);
         }
-
         if ($this->closeButton !== null) {
             $this->closeButton = ArrayHelper::merge($this->closeButton, [
                 'data-dismiss' => 'popover-x',
@@ -315,7 +314,6 @@ class PopoverX extends Widget
                 'class' => 'close',
             ]);
         }
-
         if ($this->toggleButton !== null) {
             $this->toggleButton = ArrayHelper::merge($this->toggleButton, [
                 'data-toggle' => 'popover-x',

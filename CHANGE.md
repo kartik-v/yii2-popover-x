@@ -1,6 +1,14 @@
 Change Log: `yii2-popover-x`
 ============================
 
+## Version 1.3.4
+
+**Date:** 08-Sep-2017
+
+- (enh #18): Enhancements for BS4 support for bootstrap popover-x v1.4.5.
+- (enh #16): Added more positioning constants.
+- Add github contribution and issue/PR logging templates.
+
 ## Version 1.3.3
 
 **Date:** 12-Jan-2016

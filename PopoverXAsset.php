@@ -1,8 +1,8 @@
 <?php
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2017
  * @package yii2-popover-x
- * @version 1.3.3
+ * @version 1.3.4
  */
 
 namespace kartik\popover;
