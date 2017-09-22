@@ -1,7 +1,11 @@
 Change Log: `yii2-popover-x`
 ============================
 
-## Version 1.3.4
+## Version 1.3.5
+
+**Date:** 22-Sep-2017
+
+- (enh #19): Enhance `header`, `closeButton`, and `toggleButton` rendering validation.
 
 **Date:** 08-Sep-2017
 

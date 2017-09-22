@@ -197,26 +197,6 @@ class PopoverX extends Widget
     }
 
     /**
-     * Renders the header HTML markup of the popover dialog.
-     *
-     * @return string the rendering result
-     */
-    protected function renderHeader()
-    {
-        $button = $this->renderCloseButton();
-        if ($button !== null) {
-            $this->header = $button . "\n" . $this->header;
-        }
-        if (!empty($this->header)) {
-            $tag = ArrayHelper::remove($this->headerOptions, 'tag', 'div');
-            Html::addCssClass($this->headerOptions, ['popover-header', 'popover-title']);
-            return Html::tag($tag, "\n" . $this->header . "\n", $this->headerOptions);
-        } else {
-            return null;
-        }
-    }
-
-    /**
      * Renders the opening tag of the popover dialog body.
      *
      * @return string the rendering result
@@ -237,19 +217,37 @@ class PopoverX extends Widget
     }
 
     /**
+     * Renders the header HTML markup of the popover dialog.
+     *
+     * @return string the rendering result
+     */
+    protected function renderHeader()
+    {
+        $button = $this->renderCloseButton();
+        if ($button !== '') {
+            $this->header = $button . "\n" . (empty($this->header) ? '' : $this->header);
+        }
+        if (empty($this->header)) {
+            return '';
+        }
+        $tag = ArrayHelper::remove($this->headerOptions, 'tag', 'div');
+        Html::addCssClass($this->headerOptions, ['popover-header', 'popover-title']);
+        return Html::tag($tag, "\n" . $this->header . "\n", $this->headerOptions);
+    }
+
+    /**
      * Renders the HTML markup for the footer of the popover dialog.
      *
      * @return string the rendering result
      */
     protected function renderFooter()
     {
-        if (!empty($this->footer)) {
-            $tag = ArrayHelper::remove($this->footerOptions, 'tag', 'div');
-            Html::addCssClass($this->footerOptions, 'popover-footer');
-            return Html::tag($tag, "\n" . $this->footer . "\n", $this->footerOptions);
-        } else {
+        if (empty($this->footer)) {
             return '';
         }
+        $tag = ArrayHelper::remove($this->footerOptions, 'tag', 'div');
+        Html::addCssClass($this->footerOptions, 'popover-footer');
+        return Html::tag($tag, "\n" . $this->footer . "\n", $this->footerOptions);
     }
 
     /**
@@ -259,16 +257,15 @@ class PopoverX extends Widget
      */
     protected function renderToggleButton()
     {
-        if ($this->toggleButton !== null) {
-            $tag = ArrayHelper::remove($this->toggleButton, 'tag', 'button');
-            $label = ArrayHelper::remove($this->toggleButton, 'label', 'Show');
-            if ($tag === 'button' && !isset($this->toggleButton['type'])) {
-                $this->toggleButton['type'] = 'button';
-            }
-            return Html::tag($tag, $label, $this->toggleButton);
-        } else {
+        if (!is_array($this->toggleButton) || empty($this->toggleButton)) {
             return '';
         }
+        $tag = ArrayHelper::remove($this->toggleButton, 'tag', 'button');
+        $label = ArrayHelper::remove($this->toggleButton, 'label', 'Show');
+        if ($tag === 'button' && !isset($this->toggleButton['type'])) {
+            $this->toggleButton['type'] = 'button';
+        }
+        return Html::tag($tag, $label, $this->toggleButton);
     }
 
     /**
@@ -278,16 +275,15 @@ class PopoverX extends Widget
      */
     protected function renderCloseButton()
     {
-        if ($this->closeButton !== null) {
-            $tag = ArrayHelper::remove($this->closeButton, 'tag', 'button');
-            $label = ArrayHelper::remove($this->closeButton, 'label', '&times;');
-            if ($tag === 'button' && !isset($this->closeButton['type'])) {
-                $this->closeButton['type'] = 'button';
-            }
-            return Html::tag($tag, $label, $this->closeButton);
-        } else {
+        if (!is_array($this->toggleButton) || empty($this->closeButton)) {
             return '';
         }
+        $tag = ArrayHelper::remove($this->closeButton, 'tag', 'button');
+        $label = ArrayHelper::remove($this->closeButton, 'label', '&times;');
+        if ($tag === 'button' && !isset($this->closeButton['type'])) {
+            $this->closeButton['type'] = 'button';
+        }
+        return Html::tag($tag, $label, $this->closeButton);
     }
 
     /**
@@ -307,14 +303,14 @@ class PopoverX extends Widget
         if ($this->pluginOptions !== false) {
             $this->pluginOptions = ArrayHelper::merge($this->pluginOptions, ['show' => false]);
         }
-        if ($this->closeButton !== null) {
+        if ($this->closeButton !== null && is_array($this->closeButton)) {
             $this->closeButton = ArrayHelper::merge($this->closeButton, [
                 'data-dismiss' => 'popover-x',
                 'aria-hidden' => 'true',
                 'class' => 'close',
             ]);
         }
-        if ($this->toggleButton !== null) {
+        if ($this->toggleButton !== null && is_array($this->toggleButton)) {
             $this->toggleButton = ArrayHelper::merge($this->toggleButton, [
                 'data-toggle' => 'popover-x',
                 'data-placement' => $this->placement
