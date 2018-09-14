@@ -1,8 +1,8 @@
 <?php
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2017
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2018
  * @package yii2-popover-x
- * @version 1.3.4
+ * @version 1.3.5
  */
 
 namespace kartik\popover;
@@ -10,6 +10,8 @@ namespace kartik\popover;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use kartik\base\Widget;
+use yii\helpers\Inflector;
+use yii\helpers\Json;
 
 /**
  * An extended popover widget for Yii Framework 2 based on the bootstrap-popover-x plugin by Krajee. This widget
@@ -37,34 +39,139 @@ use kartik\base\Widget;
  */
 class PopoverX extends Widget
 {
+    /**
+     * @var string the **default** bootstrap contextual color type
+     */
     const TYPE_DEFAULT = 'default';
+
+    /**
+     * @var string the **primary** bootstrap contextual color type
+     */
     const TYPE_PRIMARY = 'primary';
+
+    /**
+     * @var string the **information** bootstrap contextual color type
+     */
     const TYPE_INFO = 'info';
-    const TYPE_SUCCESS = 'success';
+
+    /**
+     * @var string the **danger** bootstrap contextual color type
+     */
     const TYPE_DANGER = 'danger';
+
+    /**
+     * @var string the **warning** bootstrap contextual color type
+     */
     const TYPE_WARNING = 'warning';
 
+    /**
+     * @var string the **success** bootstrap contextual color type
+     */
+    const TYPE_SUCCESS = 'success';
+
+    /**
+     * @var string **auto** align popover container and its pointing arrow
+     */
     const ALIGN_AUTO = 'auto';
+
+    /**
+     * @var string **auto top** align popover container and its pointing arrow
+     */
     const ALIGN_AUTO_TOP = 'auto-top';
+
+    /**
+     * @var string **auto right** align popover container and its pointing arrow
+     */
     const ALIGN_AUTO_RIGHT = 'auto-right';
+
+    /**
+     * @var string **auto bottom** align popover container and its pointing arrow
+     */
     const ALIGN_AUTO_BOTTOM = 'auto-bottom';
+
+    /**
+     * @var string **auto left** align popover container and its pointing arrow
+     */
     const ALIGN_AUTO_LEFT = 'auto-left';
+
+    /**
+     * @var string **horizontal** align popover container and its pointing arrow
+     */
     const ALIGN_HORIZONTAL = 'horizontal';
+
+    /**
+     * @var string **auto vertical** align popover container and its pointing arrow
+     */
     const ALIGN_AUTO_VERTICAL = 'vertical';
+
+    /**
+     * @var string **right** align popover container and its pointing arrow
+     */
     const ALIGN_RIGHT = 'right';
+
+    /**
+     * @var string **left** align popover container and its pointing arrow
+     */
     const ALIGN_LEFT = 'left';
+
+    /**
+     * @var string **top** align popover container and its pointing arrow
+     */
     const ALIGN_TOP = 'top';
+
+    /**
+     * @var string **bottom** align popover container and its pointing arrow
+     */
     const ALIGN_BOTTOM = 'bottom';
+
+    /**
+     * @var string **top** and **top left** align popover container and its pointing arrow
+     */
     const ALIGN_TOP_LEFT = 'top top-left';
+
+    /**
+     * @var string **bottom** and **bottom left** align popover container and its pointing arrow
+     */
     const ALIGN_BOTTOM_LEFT = 'bottom bottom-left';
+
+    /**
+     * @var string **top** and **top right** align popover container and its pointing arrow
+     */
     const ALIGN_TOP_RIGHT = 'top top-right';
+
+    /**
+     * @var string **bottom** and **bottom right** align popover container and its pointing arrow
+     */
     const ALIGN_BOTTOM_RIGHT = 'bottom bottom-right';
+
+    /**
+     * @var string **left** and **left top** align popover container and its pointing arrow
+     */
     const ALIGN_LEFT_TOP = 'left left-top';
+
+    /**
+     * @var string **right** and **right top** align popover container and its pointing arrow
+     */
     const ALIGN_RIGHT_TOP = 'right right-top';
+
+    /**
+     * @var string **left** and **left bottom** align popover container and its pointing arrow
+     */
     const ALIGN_LEFT_BOTTOM = 'left left-bottom';
+
+    /**
+     * @var string **right** and **right bottom** align popover container and its pointing arrow
+     */
     const ALIGN_RIGHT_BOTTOM = 'right right-bottom';
 
+    /**
+     * @var string **large** size
+     */
     const SIZE_LARGE = 'lg';
+
+    /**
+     * @var string **medium** size
+     */
     const SIZE_MEDIUM = 'md';
 
     /**
@@ -74,7 +181,7 @@ class PopoverX extends Widget
 
     /**
      * @var string the popover contextual type. Must be one of the [[TYPE]] constants Defaults to
-     *     `PopoverX::TYPE_DEFAULT` or `default`.
+     * `PopoverX::TYPE_DEFAULT` or `default`.
      */
     public $type = self::TYPE_DEFAULT;
 
@@ -163,7 +270,7 @@ class PopoverX extends Widget
         parent::init();
         $this->initWidget();
     }
-    
+
     /**
      * @inheritdoc
      */
@@ -171,12 +278,13 @@ class PopoverX extends Widget
     {
         $this->runWidget();
     }
-    
+
     /**
      * Initializes the widget
      */
     public function initWidget()
-    { 
+    {
+        $this->initBsVersion();
         $this->initOptions();
         echo $this->renderToggleButton() . "\n";
         echo Html::beginTag('div', $this->options) . "\n";
@@ -184,7 +292,7 @@ class PopoverX extends Widget
         echo $this->renderHeader() . "\n";
         echo $this->renderBodyBegin() . "\n";
     }
-    
+
     /**
      * Runs the widget
      */
@@ -295,10 +403,14 @@ class PopoverX extends Widget
         if (!isset($this->options['role'])) {
             $this->options['role'] = 'dialog';
         }
-        Html::addCssClass($this->options, ['popover', 'popover-x', "popover-{$this->type}"]);
-        if (isset($this->size)) {
-            Html::addCssClass($this->options, "popover-{$this->size}");
+        $css = ['popover', 'popover-x', "popover-{$this->type}"];
+        if ($this->isBs4()) {
+            $css[] = 'is-bs4';
         }
+        if (isset($this->size)) {
+            $css[] = "popover-{$this->size}";
+        }
+        Html::addCssClass($this->options, $css);
         Html::addCssClass($this->arrowOptions, 'arrow');
         if ($this->pluginOptions !== false) {
             $this->pluginOptions = ArrayHelper::merge($this->pluginOptions, ['show' => false]);
@@ -311,10 +423,17 @@ class PopoverX extends Widget
             ]);
         }
         if ($this->toggleButton !== null && is_array($this->toggleButton)) {
-            $this->toggleButton = ArrayHelper::merge($this->toggleButton, [
+            $opts = [
                 'data-toggle' => 'popover-x',
-                'data-placement' => $this->placement
-            ]);
+                'data-placement' => $this->placement,
+            ];
+            if (!empty($this->pluginOptions)) {
+                foreach ($this->pluginOptions as $key => $value) {
+                    $k = 'data-' . Inflector::camel2id($key);
+                    $opts[$k] = is_array($value) ? Json::encode($value) : $value;
+                }
+            }
+            $this->toggleButton = ArrayHelper::merge($this->toggleButton, $opts);
             if (!isset($this->toggleButton['data-target']) && !isset($this->toggleButton['href'])) {
                 $this->toggleButton['data-target'] = '#' . $this->options['id'];
             }

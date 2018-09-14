@@ -3,8 +3,11 @@ Change Log: `yii2-popover-x`
 
 ## Version 1.3.5
 
-**Date:** 22-Sep-2017
+**Date:** 14-Sep-2018
 
+- Enhancement to parse `pluginOptions` correctly when only `toggleButton` is configured.
+- Move all source code to `src` directory.
+- Enhancements to support Bootstrap v4.x.
 - (enh #19): Enhance `header`, `closeButton`, and `toggleButton` rendering validation.
 
 **Date:** 08-Sep-2017
