@@ -97,7 +97,7 @@ class PopoverX extends Widget
     /**
      * @var string **horizontal** align popover container and its pointing arrow
      */
-    const ALIGN_HORIZONTAL = 'horizontal';
+    const ALIGN_AUTO_HORIZONTAL = 'horizontal';
 
     /**
      * @var string **auto vertical** align popover container and its pointing arrow
